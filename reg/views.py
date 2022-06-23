@@ -59,7 +59,7 @@ class RegCreateView(CreateView):
         return f'/list/#number-{self.object.number}'
     
     def get_form_class(self):
-        if datetime.now().date() > datetime.strptime('2022-06-22', '%Y-%m-%d').date():
+        if datetime.now().date() > datetime.strptime('2022-06-28', '%Y-%m-%d').date():
             return RegFormOutdate
         return super().get_form_class()
 

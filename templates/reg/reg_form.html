@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-8">
+				<h1 class="mt-2">Регистрация участника эндуро тренеровки<br><b>Last Attack Heat 2022</b></h1>
+				<hr class="mt-0 mb-4">
+				<p class="mt-2">
+					Перед тем как зарегистрироваться в том или ином классе ознкоммтесь с данной информацией. <b>Если вы являлись
+					призёром (1, 2 или 3 место) в прошлых соревнованиях по эндуро, даже в "дворовых", то в тот же класс заявиться
+					не
+					можите</b>,
+					кроме "эксперт". Данная информация будет проверяться проверяться у лидеров соответствующего зачета гонки, при
+					нарушении этого правила
+					результат не будет защитан!
+				</p>
+				<p class="mt-2 text-danger">
+					Регистрация с выбором стартового номера доступна с 23.06.2022 по 28.06.2022
+				</p>
+				<form method="post">
+
+					{% csrf_token %}
+					{{ form|crispy }}
+
+					<p class="mt-2">
+						Изменить класс участия можно связавшись с Администратором мероприятия,
+						<a href="https://t.me/+B2Qpe7Ocj-xhOTMy" target="_blank">https://t.me/+B2Qpe7Ocj-xhOTMy</a>
+					</p>
+
+					<button type="submit" class="btn btn-success">Зарегистрироваться</button>
+				</form>
+				<div class="mt-2">
+					<a href="/list/" target="_blank">Список участников</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

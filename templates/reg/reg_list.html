@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load utils_tags %}
+
+{% block content %}
+	<div class="p-3 p-md-5 m-md-3">
+		<div class="col-12">
+			<h1 class="mt-2">
+				Список участников эндуро тренеровки<br><b>Last Attack Heat 2022</b>
+			</h1>
+			{% regroup object_list by klass as klass_list %}
+
+			{% for klass in klass_list %}
+				<h2 class="mt-2 text-danger">
+					{{ klass_names|get_item:klass.grouper }}
+				</h2>
+				<table class="table">
+					<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">ФИО</th>
+						<th scope="col">Город</th>
+						<th scope="col">Комманда</th>
+						<th scope="col">Модель мотоцикла</th>
+					</tr>
+					</thead>
+					<tbody>
+					{% for object in klass.list %}
+						<tr>
+							<th scope="row">{{ object.number }}</th>
+							<td>{{ object.fio }}</td>
+							<td>{{ object.city }}</td>
+							<td>{{ object.team }}</td>
+							<td>{{ object.bike }}</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
